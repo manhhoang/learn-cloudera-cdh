@@ -41,7 +41,7 @@ public class KafkaProducerTest extends Thread {
     }
 
     public String toJON() {
-      return "{noteId:1,noteName=test}";
+      return "{noteId:1,noteName:test}";
     }
   }
 
@@ -59,7 +59,7 @@ public class KafkaProducerTest extends Thread {
 
   private void init() {
     Properties properties = new Properties();
-    properties.put("metadata.broker.list", "54.169.107.50:9092");
+    properties.put("metadata.broker.list", "52.77.104.126:9092");
     properties.put("serializer.class", "kafka.serializer.StringEncoder");
     producerConfig = new ProducerConfig(properties);
     producer = new kafka.javaapi.producer.Producer<String, String>(producerConfig);
