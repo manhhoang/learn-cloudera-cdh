@@ -17,7 +17,7 @@ public class HiveJdbcClient {
       System.exit(1);
     }
     Connection con =
-        DriverManager.getConnection("jdbc:hive2://ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:10000/emstest", "root", "cloudera");
+        DriverManager.getConnection("jdbc:hive2://ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:10000/emstest", "", "");
     Statement stmt = con.createStatement();
     String tableName = "note";
     String sql = "select * from " + tableName;

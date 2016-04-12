@@ -14,7 +14,7 @@ public class ImpalaJdbcClient {
     Connection con = null;
     Statement stmt = null;
     ResultSet rs = null;
-    String query = "select * from note_parquet";
+    String query = "select * from note";
     try {
       Class.forName(JDBC_DRIVER);
       con = DriverManager.getConnection(CONNECTION_URL);
