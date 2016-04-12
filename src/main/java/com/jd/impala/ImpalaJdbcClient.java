@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class ImpalaJdbcClient {
   static String JDBC_DRIVER = "com.cloudera.impala.jdbc41.Driver";
-  private static final String CONNECTION_URL = "jdbc:impala://localhost:21050/emstest";
+  private static final String CONNECTION_URL = "jdbc:impala://ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:21050/emstest";
 
   public static void main(String[] args) {
     Connection con = null;

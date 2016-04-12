@@ -17,7 +17,7 @@ public class Consumer extends ShutdownableThread {
 	public Consumer(String topic) {
 		super("KafkaConsumerExample", false);
 		Properties props = new Properties();
-		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "host1.greenkoncepts.com:9092");
+		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:9092");
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, "DemoConsumer");
 		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
 		props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");

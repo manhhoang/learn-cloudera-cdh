@@ -59,7 +59,7 @@ public class KafkaProducerTest extends Thread {
 
   private void init() {
     Properties properties = new Properties();
-    properties.put("metadata.broker.list", "52.77.104.126:9092");
+    properties.put("metadata.broker.list", "ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:9092");
     properties.put("serializer.class", "kafka.serializer.StringEncoder");
     producerConfig = new ProducerConfig(properties);
     producer = new kafka.javaapi.producer.Producer<String, String>(producerConfig);
