@@ -17,13 +17,17 @@ public class HiveJdbcClient {
       System.exit(1);
     }
     Connection con =
-        DriverManager.getConnection("jdbc:hive2://ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:10000/emstest", "", "");
+        DriverManager.getConnection(
+            "jdbc:hive2://ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:10000/emstest",
+            "", "");
     Statement stmt = con.createStatement();
     String tableName = "note";
-    String sql = "select * from " + tableName;
+    // String sql = "select * from " + tableName;
+    String sql = "SHOW TABLES";
     ResultSet res = stmt.executeQuery(sql);
     while (res.next()) {
-      System.out.println(String.valueOf(res.getInt(1)) + "\t" + res.getString(2));
+      // System.out.println(String.valueOf(res.getInt(1)) + "\t" + res.getString(2));
+      System.out.println(String.valueOf(res.getString(1)));
     }
 
   }
