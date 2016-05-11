@@ -28,7 +28,7 @@ public class KafkaConsumerTest extends Thread {
 
   public KafkaConsumerTest() {
     Properties properties = new Properties();
-    properties.put("zookeeper.connect", "ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:2181");
+    properties.put("zookeeper.connect", "ec2-54-179-255-210.ap-southeast-1.compute.amazonaws.com:2181");
     properties.put("group.id", "test-group");
     ConsumerConfig consumerConfig = new ConsumerConfig(properties);
     consumerConnector = Consumer.createJavaConsumerConnector(consumerConfig);

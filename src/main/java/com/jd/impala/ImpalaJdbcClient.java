@@ -8,10 +8,17 @@ import java.sql.Statement;
 
 public class ImpalaJdbcClient {
   static String JDBC_DRIVER = "com.cloudera.impala.jdbc41.Driver";
-  private static final String CONNECTION_URL =
-      "jdbc:impala://ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:21050/emstest";
+  // private static final String CONNECTION_URL =
+  // "jdbc:impala://ec2-54-151-149-245.ap-southeast-1.compute.amazonaws.com:21050/gkadmin;principal=impala/ip-10-167-7-239.ap-southeast-1.compute.internal@EXAMPLE.COM";
+
+  private static final String CONNECTION_URL = "jdbc:impala://54.251.55.194:21050/gkadmin";
 
   public static void main(String[] args) {
+    // System.setProperty("java.security.auth.login.config", "gss-jaas.conf");
+    // System.setProperty("java.security.krb5.conf", "krb5.conf");
+    // System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
+    // System.setProperty("sun.security.krb5.debug", "true");
+
     Connection con = null;
     Statement stmt = null;
     ResultSet rs = null;
@@ -19,7 +26,7 @@ public class ImpalaJdbcClient {
     // String query = "SHOW TABLES";
     try {
       Class.forName(JDBC_DRIVER);
-      con = DriverManager.getConnection(CONNECTION_URL, "user", "asdas");
+      con = DriverManager.getConnection(CONNECTION_URL);
       stmt = con.createStatement();
       rs = stmt.executeQuery(query);
       while (rs.next()) {
