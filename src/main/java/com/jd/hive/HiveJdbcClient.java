@@ -31,11 +31,11 @@ public class HiveJdbcClient {
 		Connection con = DriverManager.getConnection(
 				"jdbc:hive2://ec2-54-151-149-245.ap-southeast-1.compute.amazonaws.com:10000/gkadmin;principal=hive/ip-10-167-7-239.ap-southeast-1.compute.internal@EXAMPLE.COM");
 		Statement stmt = con.createStatement();
-		String sql = "select * from EmsTestEvents order by 'timestamp' ASC limit 100";
+		String sql = "select * from EmsTestEvents order by 'timestamp' DESC limit 100";
 		// String sql = "SHOW TABLES";
 		ResultSet res = stmt.executeQuery(sql);
 		while (res.next()) {
-			System.out.println(String.valueOf(res.getInt(1)) + "\t" + res.getString(2) + "\t" + res.getString(3) + "\t"
+			System.out.println(String.valueOf(res.getLong(1)) + "\t" + res.getString(2) + "\t" + res.getString(3) + "\t"
 					+ res.getString(4) + "\t" + res.getString(5));
 			// System.out.println(String.valueOf(res.getString(1)));
 		}

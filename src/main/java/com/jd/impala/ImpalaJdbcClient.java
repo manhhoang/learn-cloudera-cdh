@@ -21,12 +21,12 @@ public class ImpalaJdbcClient {
 		System.setProperty("java.security.auth.login.config", "gss-jaas.conf");
 		System.setProperty("java.security.krb5.conf", "krb5.conf");
 		System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
-		System.setProperty("sun.security.krb5.debug", "true");
+		System.setProperty("sun.security.krb5.debug", "false");
 
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from emstestevents order by 'timestamp' ASC limit 100";
+		String query = "select * from emstestevents order by 'timestamp' DESC limit 100";
 		// String query = "SHOW TABLES";
 		try {
 			Class.forName(JDBC_DRIVER);
@@ -34,7 +34,7 @@ public class ImpalaJdbcClient {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				System.out.println(String.valueOf(rs.getInt(1)) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t"
+				System.out.println(String.valueOf(rs.getLong(1)) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t"
 						+ rs.getString(4) + "\t" + rs.getString(5) + "\t" + rs.getString(6));
 				// System.out.println(String.valueOf(rs.getString(1)));
 			}
