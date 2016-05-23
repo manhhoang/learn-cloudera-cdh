@@ -40,7 +40,7 @@ public class HiveConversion {
         DriverManager
             .getConnection("jdbc:hive2://ec2-54-151-149-245.ap-southeast-1.compute.amazonaws.com:10000/gkadmin;principal=hive/ip-10-167-7-239.ap-southeast-1.compute.internal@EXAMPLE.COM");
     Statement stmt = con.createStatement();
-    String sql = "select * from node order by id ASC limit 100";
+    String sql = "select * from node";
     ResultSet res = stmt.executeQuery(sql);
     List<Node> nodes = new ArrayList<Node>();
     while (res.next()) {
@@ -58,15 +58,6 @@ public class HiveConversion {
     String satTable = "node_convertion";
     hiveSchemaDF.saveAsTable(satTable, SaveMode.Append);
     ctx.stop();
-  }
-
-  private static byte[] splitByteArray(byte[] toSplit, int offset) {
-    byte[] split = new byte[8];
-    for (int i = 0; i < split.length; i++) {
-      split[i] = toSplit[offset + i];
-    }
-
-    return split;
   }
 
 }
