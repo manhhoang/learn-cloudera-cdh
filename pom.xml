@@ -77,7 +77,27 @@
 			<artifactId>spark-hive_2.10</artifactId>
 			<version>1.6.0</version>
 		</dependency>
-
+		
+		<!-- Hbase -->
+		<dependency>
+		    <groupId>org.apache.hbase</groupId>
+		    <artifactId>hbase</artifactId>
+		    <version>1.2.1</version>
+		    <type>pom</type>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.hbase</groupId>
+		    <artifactId>hbase-client</artifactId>
+		    <version>1.2.1</version>
+		</dependency>
+		
+		<!-- Guava -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>19.0</version>
+		</dependency>
+		
 	</dependencies>
 
 	<profiles>
