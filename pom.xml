@@ -79,23 +79,23 @@
 		</dependency>
 		
 		<!-- Hbase -->
-		<dependency>
+		<!-- <dependency>
 		    <groupId>org.apache.hbase</groupId>
 		    <artifactId>hbase</artifactId>
-		    <version>1.2.1</version>
+		    <version>1.2.0</version>
 		    <type>pom</type>
-		</dependency>
+		</dependency> -->
 		<dependency>
 		    <groupId>org.apache.hbase</groupId>
 		    <artifactId>hbase-client</artifactId>
-		    <version>1.2.1</version>
+		    <version>1.2.0</version>
 		</dependency>
 		
 		<!-- Guava -->
 		<dependency>
 		    <groupId>com.google.guava</groupId>
 		    <artifactId>guava</artifactId>
-		    <version>19.0</version>
+		    <version>12.0.1</version>
 		</dependency>
 		
 	</dependencies>

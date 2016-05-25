@@ -10,6 +10,7 @@ import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.KeyValue;
 import org.apache.hadoop.hbase.MasterNotRunningException;
+import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.ZooKeeperConnectionException;
 import org.apache.hadoop.hbase.client.Delete;
 import org.apache.hadoop.hbase.client.Get;
@@ -29,6 +30,9 @@ public class HbaseClient {
    */
   static {
     conf = HBaseConfiguration.create();
+    conf.set("hbase.zookeeper.quorum", "ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com");
+    conf.set("hbase.zookeeper.property.clientPort", "2181");
+    conf.set("hbase.master", "ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:60000");
   }
 
   /**
@@ -39,7 +43,7 @@ public class HbaseClient {
     if (admin.tableExists(tableName)) {
       System.out.println("table already exists!");
     } else {
-      HTableDescriptor tableDesc = new HTableDescriptor(tableName);
+      HTableDescriptor tableDesc = new HTableDescriptor(TableName.valueOf(tableName));
       for (int i = 0; i < familys.length; i++) {
         tableDesc.addFamily(new HColumnDescriptor(familys[i]));
       }
