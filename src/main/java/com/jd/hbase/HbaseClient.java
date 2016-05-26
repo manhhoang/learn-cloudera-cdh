@@ -32,7 +32,7 @@ public class HbaseClient {
     conf = HBaseConfiguration.create();
     conf.set("hbase.zookeeper.quorum", "ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com");
     conf.set("hbase.zookeeper.property.clientPort", "2181");
-    conf.set("hbase.master", "ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:60000");
+    // conf.set("hbase.master", "ec2-54-251-55-194.ap-southeast-1.compute.amazonaws.com:60000");
   }
 
   /**
