@@ -112,6 +112,19 @@ public class HbaseClient {
     }
   }
 
+  public static String getOneRecord(String tableName, String rowKey, String qualifier)
+      throws IOException {
+    HTable table = new HTable(conf, tableName);
+    Get get = new Get(rowKey.getBytes());
+    Result rs = table.get(get);
+    for (KeyValue kv : rs.raw()) {
+      if (new String(kv.getQualifier()).equals(qualifier)) {
+        return new String(kv.getValue());
+      }
+    }
+    return "0";
+  }
+
   /**
    * Scan (or list) a table
    */
