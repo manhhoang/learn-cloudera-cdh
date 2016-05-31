@@ -32,21 +32,18 @@ public class ImportBinDataHbase {
     SparkConf sparkConf = new SparkConf().setAppName("BinData");
     JavaSparkContext jsc = new JavaSparkContext(sparkConf);
     HiveContext hiveContext = new HiveContext(jsc.sc());
-    Row[] results =
-        hiveContext
-            .sql(
-                "FROM gkadmin.emstestevents_raw SELECT timestamp,nodename,measurename,unit,value WHERE timestamp >="
-                    + cal.getTimeInMillis()).collect();
+    Row[] results = hiveContext.sql("SELECT * FROM gkadmin.emstestevents_raw LIMIT 100").collect();
     List<TimeSeries> listTime = new ArrayList<TimeSeries>();
     for (Row row : results) {
       TimeSeries time = new TimeSeries();
-      time.setTimestamp(Long.parseLong((String) row.getAs("timestamp")));
-      time.setNodeName((String) row.getAs("nodename"));
-      time.setMeasureName((String) row.getAs("measurename"));
-      time.setUnit((String) row.getAs("unit"));
-      time.setValue(Float.parseFloat((String) row.getAs("value")));
+      time.setTimestamp(Long.parseLong(String.valueOf(row.getAs("timestamp"))));
+      time.setNodeName(String.valueOf(row.getAs("nodename")));
+      time.setMeasureName(String.valueOf(row.getAs("measurename")));
+      time.setUnit(String.valueOf(row.getAs("unit")));
+      time.setValue(Float.parseFloat(String.valueOf(row.getAs("value"))));
       listTime.add(time);
     }
+    System.out.println("List size: " + listTime.size());
     JavaRDD<TimeSeries> timeSeriesRDD = jsc.parallelize(listTime);
 
     String tableName = "table";
